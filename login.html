@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理后台登录</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Login Container -->
+    <div class="login-container">
+        <a href="index.html" class="login-back">← 返回首页</a>
+        <div class="login-card">
+            <div class="login-header">
+                <h1>管理后台</h1>
+                <p>请登录以管理节日内容</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="username" placeholder="请输入用户名" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" placeholder="请输入密码" required>
+                        <button type="button" class="password-toggle" id="password-toggle">显示</button>
+                    </div>
+                </div>
+                <div id="login-error" class="error-message"></div>
+                <button type="submit" class="login-btn" id="submit-btn">登录</button>
+            </form>
+            <div class="login-hint">
+                <p>请使用管理员账号登录</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html>

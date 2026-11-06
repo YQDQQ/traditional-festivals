@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中华传统节日文化</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-brand">中华传统节日</div>
+            <div class="loader-num-wrap">
+                <span id="loader-num" class="loader-num">0</span>
+            </div>
+            <div class="loader-track">
+                <div id="loader-fill" class="loader-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <h1 class="logo-title">中华传统节日</h1>
+                    <p class="logo-subtitle">传承 · 弘扬</p>
+                </a>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link active">首页</a>
+                    <span class="nav-sep"></span>
+                    <a href="about.html" class="nav-link">关于</a>
+                    <span class="nav-sep"></span>
+                    <a href="login.html" class="nav-link nav-btn">后台管理</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    传承千年文化
+                </div>
+                <h1 class="hero-title">
+                    探索中华<span class="highlight">传统节日</span>的魅力
+                </h1>
+                <div class="hero-desc">
+                    <p class="hero-question">传统节日的意义在哪？</p>
+                    <p>它连接着过去和现在，</p>
+                    <p>藏着我们民族的记忆，</p>
+                    <p>也提醒着我们——</p>
+                    <p class="hero-quote">有些东西，值得一代代传下去</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="festivals-count">0</div>
+                        <div class="stat-label">传统节日</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="customs-count">0</div>
+                        <div class="stat-label">传统习俗</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="activities-count">0</div>
+                        <div class="stat-label">相关活动</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">千年</div>
+                        <div class="stat-label">历史传承</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Festivals Section -->
+    <section class="festivals">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">节日展示</h2>
+                <div class="divider"></div>
+                <div class="search-box">
+                    <input type="text" id="search-input" class="search-input" placeholder="搜索节日名称或描述...">
+                </div>
+            </div>
+            <div id="festivals-list" class="festivals-grid">
+                <!-- Festivals will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">传承文化，弘扬传统</h2>
+                <p class="cta-desc">
+                    每一个传统节日都是中华民族文化的瑰宝，承载着我们祖先的智慧与情感。<br>
+                    让我们共同守护和传承这些珍贵的文化遗产。
+                </p>
+                <div class="tags" id="festival-tags">
+                    <!-- Tags will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <span class="footer-title">中华传统节日文化</span>
+                <p class="footer-text">传承与弘扬优秀传统文化 · 共建美好精神家园</p>
+                <p class="footer-copyright">枫丹廷 欧庇克莱歌剧院 水神亲卫队 芙琳娜 © 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 20);
+        });
+    </script>
+</body>
+</html>
