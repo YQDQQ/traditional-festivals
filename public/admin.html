@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理后台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <h1 class="logo-title">中华传统节日</h1>
+                    <p class="logo-subtitle">传承 · 弘扬</p>
+                </a>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">首页</a>
+                    <span class="nav-sep"></span>
+                    <a href="about.html" class="nav-link">关于</a>
+                    <span class="nav-sep"></span>
+                    <button class="btn-primary nav-action-btn" id="add-festival-btn">添加节日</button>
+                    <button class="nav-link nav-btn" id="password-btn">修改密码</button>
+                    <span class="nav-sep"></span>
+                    <button class="nav-link nav-btn" id="logout-btn">退出</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Section -->
+    <section class="admin-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-box-value" id="admin-festivals-count">0</div>
+                    <div class="stat-box-label">传统节日</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-value" id="admin-customs-count">0</div>
+                    <div class="stat-box-label">传统习俗</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-value" id="admin-activities-count">0</div>
+                    <div class="stat-box-label">相关活动</div>
+                </div>
+            </div>
+
+            <div class="admin-content">
+                <div class="content-header">
+                    <h2 class="content-title">节日管理</h2>
+                    <input type="text" id="search-festival" class="search-input admin-search" placeholder="搜索节日...">
+                </div>
+                <div class="table-container">
+                    <table class="festivals-table" id="festivals-table">
+                        <thead>
+                            <tr>
+                                <th>节日名称</th>
+                                <th>节日日期</th>
+                                <th>习俗数</th>
+                                <th>活动数</th>
+                                <th>图片数</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal" id="festival-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">添加节日</h2>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <form id="festival-form">
+                <input type="hidden" id="festival-id">
+                <div class="form-group">
+                    <label for="festival-name">节日名称</label>
+                    <input type="text" id="festival-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="festival-date">节日日期</label>
+                    <input type="text" id="festival-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="festival-desc">节日简介</label>
+                    <textarea id="festival-desc" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>传统习俗 (用逗号分隔)</label>
+                    <input type="text" id="festival-customs" placeholder="如: 贴春联, 放鞭炮, 吃年夜饭">
+                </div>
+                <div class="form-group">
+                    <label>相关活动 (用逗号分隔)</label>
+                    <input type="text" id="festival-activities" placeholder="如: 舞龙舞狮, 逛庙会, 赏花灯">
+                </div>
+                <div class="form-group">
+                    <label>图片管理</label>
+                    <div class="image-upload-area">
+                        <input type="file" id="image-upload-input" accept="image/*" multiple style="display:none">
+                        <button type="button" class="btn-secondary" id="upload-trigger">选择图片</button>
+                        <span class="upload-hint">支持 jpg/png/gif/svg/webp，单文件最大 5MB</span>
+                    </div>
+                    <div class="preview-grid" id="preview-images"></div>
+                    <input type="hidden" id="festival-images" placeholder="图片路径将自动填充">
+                </div>
+                <div id="modal-error" class="error-message"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancel-btn">取消</button>
+                    <button type="submit" class="btn-primary">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div class="modal" id="password-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>修改密码</h2>
+                <button class="modal-close" id="password-close">&times;</button>
+            </div>
+            <form id="password-form" style="padding:28px">
+                <div class="form-group">
+                    <label for="old-password">原密码</label>
+                    <input type="password" id="old-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">新密码</label>
+                    <input type="password" id="new-password" required minlength="4">
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">确认新密码</label>
+                    <input type="password" id="confirm-password" required>
+                </div>
+                <div class="error-message" id="password-error"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="password-cancel">取消</button>
+                    <button type="submit" class="btn-primary">确认修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirm Dialog -->
+    <div class="confirm-overlay" id="confirm-overlay">
+        <div class="confirm-dialog">
+            <p id="confirm-message"></p>
+            <div class="confirm-actions">
+                <button class="btn-secondary" id="confirm-cancel">取消</button>
+                <button class="btn-danger" id="confirm-ok">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <span class="footer-title">中华传统节日文化</span>
+                <p class="footer-text">传承与弘扬优秀传统文化 · 共建美好精神家园</p>
+                <p class="footer-copyright">枫丹廷 欧庇克莱歌剧院 水神亲卫队 芙琳娜 © 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/admin.js"></script>
+    <script>
+        window.addEventListener('scroll', () => {
+            document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 20);
+        });
+    </script>
+</body>
+</html>
